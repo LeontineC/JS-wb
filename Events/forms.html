@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>HTML Forms</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+  <div class="wrapper">
+  <a class="linkOtherWebsite" href="https://flexboxfroggy.com/">flexbox froggy</a>
+    <form name="signup">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" >
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" >
+      <input type="checkbox" id="agree" name="agree">
+      <label for="agree">I agree to the terms and conditions</label>
+      <hr>
+      <button type="submit">Submit</button>
+    </form>
+    <form name="signup-cat">
+        <label for="nameOfCat">Name Of Cat</label>
+        <input type="text" id="nameOfCat" name="nameOfCat">
+        <label for="typeOfCat">Type of Cat</label>
+        <input type="text" id="typeOfCat" name="typeOfCat">
+        <input required type="checkbox" id="accord" name="accord">
+        <!-- <input type="checkbox" id="accord" name="accord"> -->
+        <label for="accord">I agree that cats are cool</label>
+        <hr>
+        <button type="submit">Submit</button>
+    </form>
+  </div>
+  <script src="./forms.js"></script>
+</body>
+
+</html>
