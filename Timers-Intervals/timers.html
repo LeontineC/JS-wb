@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timers and Intervals</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+  <body>
+    <p></p>
+
+    <script>
+      const paragraph = document.querySelector("p");
+
+      // syntax = setTimeout(function() {}, 1000);
+
+      //TIMEOUT
+
+      warning = () => {
+        paragraph.textContent = "BEWARE OF CATS";
+      };
+
+      setTimeout(warning, 1000);
+
+      //INTERVAL
+
+      message = () => {
+        console.log("don't forget the catfood!");
+      };
+
+      setInterval(message, 1000);
+
+      //setInterval runs after the time set not right away
+
+      headsUp = () => {
+        console.log("cats ♥ care!!");
+      };
+
+      oneLastThing = () => {
+        console.log("😻 cats are so cute!!!");
+      };
+
+      setImmediateInterval = (startSooner, ms) => {
+        startSooner();
+        return setInterval(startSooner, ms);
+      };
+
+      setImmediateInterval(headsUp, 2000);
+      setImmediateInterval(oneLastThing, 3000);
+
+      woah = () => {
+        document.body.innerHTML = `<h3>WOOOAAAAHHHH</h3>`;
+      };
+
+      // setTimeout(woah, 5000);
+      // save reference to the function in a variable
+      const stop = setTimeout(woah, 5000);
+
+      window.addEventListener(
+        "click",
+        (notWoah = () => {
+          document.body.innerHTML = `<h2>Never Mind!</h2>`;
+          clearTimeout(stop);
+        })
+      );
+
+      //clearInterval
+      //save reference
+      const interval = setInterval(function () {
+        console.log("🐱");
+      }, 1000);
+
+      setTimeout(function () {
+        clearInterval(interval);
+      }, 9000);
+    </script>
+  </body>
+</html>
