@@ -155,7 +155,9 @@
       // console.log(topping);
       // });
       console.clear();
-      //MAP FILTER REDUCE //
+
+      //MAP//
+
       function addArms(face) {
         return `🖐️${face}🤚`;
       }
@@ -213,6 +215,73 @@
       });
 
       console.table(cleanPeople);
+
+      //FILTER//
+      // filter returns array
+      const overFort = cleanPeople.filter(function (person) {
+        if (person.age > 40) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+
+      //OR
+
+      const overForty = cleanPeople.filter((person) => person.age > 40);
+
+      console.table(overForty);
+
+      //FIND  returns object finds one
+
+      const theStudent = students.find((student) => student.id === "565a");
+      console.log(theStudent);
+
+      findById = (id) => {
+        return function isStudent(student) {
+          return student.id === id;
+        };
+      };
+
+      const aStudent = students.find(findById("565a"));
+      console.log(aStudent);
+
+      findByProp = (property, propertyLookingFor) => {
+        return function isStudent(student) {
+          return student[property] === propertyLookingFor;
+        };
+      };
+
+      const studentOne = students.find(findByProp("id", "565a"));
+      const studentTwo = students.find(findByProp("first_name", "Dall"));
+      console.log(studentOne, studentTwo);
+
+      //REDUCE
+      console.clear(); //accumulator currentvalue
+      tallyNumbers = (tally, currentNumber) => {
+        console.log(`current tally is ${tally} `);
+        console.log(`current number is ${currentNumber}`);
+        console.log("------🐦-------");
+        return tally + currentNumber;
+      };
+
+      const allOrders = orderTotals.reduce(tallyNumbers, 0);
+
+      console.log(allOrders);
+
+      inventoryReducer = (totals, item) => {
+        totals[item.type] = totals[item.type] + 1 || 1;
+        return totals;
+      };
+
+      const inventoryCounts = inventory.reduce(inventoryReducer, {});
+      console.log(inventoryCounts);
+
+      const totalInventoryPrice = inventory.reduce(
+        (accumulator, item) => accumulator + item.price,
+        0
+      );
+      console.log(totalInventoryPrice);
     </script>
   </body>
 </html>
