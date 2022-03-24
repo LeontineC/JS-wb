@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-green: rgb(114, 204, 78);
+    --color-yellow: rgb(245, 243, 149);
+    --color-alt: rgba(179, 235, 157, 0.8);
+    --color-bg: rgba(248, 247, 195, 0.8);
+    --color-accent: rgb(204, 163, 204);
+    --box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    --text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+    --border-rad: 4px;
+}
+
+body {
+   
+    line-height: 1;
+    font-family: 'Cormorant Garamond', serif; 
+    background: linear-gradient(to bottom right,var(--color-yellow),var(--color-green));
+}
+
+.galleries {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 20px;
+    align-items: stretch;
+    background: var(--color-yellow);
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-rad);
+}
+
+.gallery img {
+    width: 100%;
+    object-fit: cover;
+    border: 2px solid var(--color-green);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-rad);
+}
+
+.gallery img:hover, img:focus{
+    border: 5px solid var(--color-accent);
+}
+
+.modal {
+    position: fixed;
+    background: var(--color-bg);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 9;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.modalInner {
+    background: var(--color-alt);
+    border-radius: var(--border-rad);
+    box-shadow: var(--box-shadow);
+    width: 60%;
+    height: 90%;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr; 
+    transform: translateY(-100vh);
+    transition: all 1s;
+}
+
+.modal figure {
+    max-height: 700px;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.modal h2 {
+    text-transform: uppercase;
+    text-shadow: var(--text-shadow);
+}
+
+.modal img {
+    width: 100%;
+    max-height: 100%;
+    border: solid var(--color-green) 8px;
+    box-shadow: var(--box-shadow);
+    object-fit: contain;
+}
+
+.modal figcaption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.modal button {
+    color: var(--color-green);
+    background: transparent;
+    border: 0;
+    text-decoration: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal.open .modalInner {
+    transform: translateY(0);
+}
