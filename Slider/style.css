@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Inspiration&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("assets/burlap.jpg");
+  font-family: "Inspiration", cursive;
+}
+
+.slider {
+  margin-top: 3em;
+}
+
+.slides {
+  width: 800px;
+  height: 500px;
+  border: 4px solid rgb(0, 0, 0);
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 5%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.slider-one img {
+  width: 80%;
+  height: 90%;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 30px #000);
+}
+
+.slider-two .slides {
+  background: rgb(255, 255, 255, 0.7);
+  font-size: 20rem;
+  font-weight: 900;
+  text-shadow: 2px 8px 6px rgba(0, 0, 0, 0.2),
+    0px -5px 35px rgba(255, 255, 255, 0.3);
+}
+
+.slide {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  transform: translateX(-200%);
+}
+
+.slide.current {
+  z-index: 10;
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.slide.prev {
+  z-index: 10;
+  transform: translateX(-100%);
+}
+
+.slide.next {
+  z-index: 10;
+  transform: translateX(100%);
+}
+
+.slide.next + .slide {
+  transform: translateX(200%);
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0 10em;
+  transform: scale(0.8);
+}
+
+.controls .goToPrev {
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-right: 60px solid rgb(0, 0, 0, 0.8);
+  border-bottom: 50px solid transparent;
+}
+
+button:hover {
+  transform: scale(1);
+}
+
+.controls .goToNext {
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-left: 60px solid rgb(0, 0, 0, 0.8);
+  border-bottom: 50px solid transparent;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+}
