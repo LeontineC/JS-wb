@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New-This-Prototypes-Classes</title>
+    <link rel="stylesheet" href="../base.css"></link>
+</head>
+<body>
+
+    <button class="button1">button 1</button>
+    <button class="button2">button 2</button>
+
+
+    <script>
+    //NEW & THIS
+       const myDate = new Date('June 12, 2022');
+       console.dir(myDate);
+       console.log(myDate.getFullYear());
+
+       function Pizza(toppings = [], customer) {
+           console.log('making a pizza');
+           this.toppings = toppings;
+           this.customer = customer;
+           this.id = Math.floor(Math.random() * 16777215).toString(16);
+       }
+
+       const pepperoniPizza = new Pizza(['pepperoni'], 'Charlie');
+       const veggiePizza = new Pizza(['mushrooms', 'tomatoes', 'bell peppers'], 'Bob');
+       console.log(pepperoniPizza, veggiePizza);
+   
+    //    console.log(pepperoniPizza.constructor);
+    //    console.log(pepperoniPizza instanceof Pizza);
+
+    //THIS
+      const buttonOne = document.querySelector('.button1');
+      const buttonTwo = document.querySelector('.button2');
+
+      function tellMeAboutTheButton() {
+        console.log(this); //if tMATB is arrow function this refers to window 
+    setTimeout(() => {    //if setTimeout is regular function this is no longer button but window
+          this.textContent = "clicked";  //if setTimeout is arrow function this does not get changed but remains button
+    } , 1000);     };
+
+      buttonOne.addEventListener('click', tellMeAboutTheButton);
+      buttonTwo.addEventListener('click', tellMeAboutTheButton);
+    
+
+    </script>
+</body>
+</html>
